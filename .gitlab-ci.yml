@@ -223,7 +223,7 @@ release:
     - ultralight
   before_script:
     - echo "Setting up Git"
-    - apt-get update && apt-get install -y git
+    - apt-get update && apt-get install -y git libxml2-utils
     - git config user.email "ci-bot@example.com"
     - git config user.name "CI Bot"
     - git remote set-url origin https://oauth2:${GITLAB_TOKEN}@ci.linagora.com/${CI_PROJECT_PATH}

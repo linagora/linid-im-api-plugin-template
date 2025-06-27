@@ -232,7 +232,7 @@ release:
     - git pull --rebase
   script:
     # 1. Extract the version from pom.xml
-    - VERSION=$(xmllint --xpath "string(//project/version)" pom.xml)
+    - VERSION=$(xmllint --xpath "string(/*[local-name()='project']/*[local-name()='version'])" pom.xml)
     - 'echo "Tagging version: v$VERSION"'
 
     # 2. Delete the local tag if it already exists
@@ -246,8 +246,6 @@ release:
 
   variables:
     GIT_STRATEGY: fetch
-    NEXUS_USERNAME: $NEXUS_USERNAME
-    NEXUS_PASSWORD: $NEXUS_PASSWORD
   rules:
     - if: '$CI_COMMIT_BRANCH == "main"'
       when: always

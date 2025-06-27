@@ -2,34 +2,53 @@
 
 This repository provides the standard structure and configuration for developing Directory Manager API plugins.
 
----
-
 ## 🚀 Getting Started
 
 To create a new plugin from this template:
 
-1. **Create a new project** on GitLab.
-2. Clone your newly created repository:
-```bash
-git clone https://ci.linagora.com/linagora/lrs/LinID/linid-dm-v2/your-plugin-name.git
-cd your-plugin-name
-```
+1. **Create a new project** on GitLab (e.g. `linid-dm-v2/your-plugin-name`).
 
-3. **Add this template as upstream**:
+2. **Clone your new repository**:
 
- ```bash
- git remote add upstream https://ci.linagora.com/linagora/lrs/LinID/linid-dm-v2/template-dm-api-plugin.git
- git fetch upstream
- ```
-4. **Remove the CI configuration from the template**:
+   ```bash
+   git clone https://ci.linagora.com/linagora/lrs/LinID/linid-dm-v2/your-plugin-name.git
+   cd your-plugin-name
+   ```
 
-   > The `.gitlab-ci.yml` in this template is not intended to be reused directly.
+3. **Add this template as an upstream remote**:
 
- ```bash
- rm .gitlab-ci.yml
- git commit -am "chore: remove template CI file"
- git push origin main
- ```
+   ```bash
+   git remote add upstream https://ci.linagora.com/linagora/lrs/LinID/linid-dm-v2/template-dm-api-plugin.git
+   git fetch upstream
+   ```
+
+4. **Create a branch for the update**:
+
+   ```bash
+   git checkout -b feature/update_from_template
+   ```
+
+5. **Merge the template into your project**:
+
+   ```bash
+   git merge upstream/main --allow-unrelated-histories
+   ```
+
+6. **Resolve any conflicts**, if necessary, then commit the result:
+
+   ```bash
+   git commit -am "feat: integrate template"
+   ```
+
+7. **Clean up**: remove unnecessary template files and adjust the project to your plugin's purpose.
+
+8. **Push your branch**:
+
+   ```bash
+   git push -u origin feature/update_from_template
+   ```
+
+9. **Create a merge request** from your branch to `main` using the GitLab interface.
 
 ---
 

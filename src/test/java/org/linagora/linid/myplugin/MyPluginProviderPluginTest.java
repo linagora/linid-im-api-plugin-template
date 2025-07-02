@@ -54,36 +54,36 @@ class MyPluginProviderPluginTest {
   @Test
   @DisplayName("Test create: should return null")
   void testCreate() {
-    assertNull(plugin.create(null, null));
+    assertNull(plugin.create(null, null, null));
   }
 
   @Test
   @DisplayName("Test update: should return null")
   void testUpdate() {
-    assertNull(plugin.update(null, null, null));
+    assertNull(plugin.update(null, null, null, null));
   }
 
   @Test
   @DisplayName("Test patch: should return null")
   void testPatch() {
-    assertNull(plugin.patch(null, null, null));
+    assertNull(plugin.patch(null, null, null, null));
   }
 
   @Test
   @DisplayName("Test delete: should return null")
   void testDelete() {
-    assertFalse(plugin.delete(null, null));
+    assertFalse(plugin.delete(null, null, null, null));
   }
 
   @Test
   @DisplayName("Test findById: should return null")
   void testFindById() {
-    assertNull(plugin.findById(null, null));
+    assertNull(plugin.findById(null, null, null, null));
   }
 
   @Test
   @DisplayName("Test findAll: should return null")
   void testFindAll() {
-    assertNull(plugin.findAll(null, null, null));
+    assertNull(plugin.findAll(null, null, null, null, null));
   }
 }

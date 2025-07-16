@@ -3,17 +3,35 @@
 ## Git conventions
 
 ### 💬 Branch naming
+Voici une version enrichie pour prendre en compte **tous les types de branches** que tu mentionnes, tout en gardant une structure claire et professionnelle :
 
-All branches must follow one of the following naming patterns:
+---
 
-| Type    | Pattern                       | Example                     |
-|---------|-------------------------------|-----------------------------|
-| Main    | `main` or `dev`               | `main`                      |
-| Feature | `feature/<short-description>` | `feature/kafka-integration` |
-| Hotfix  | `hotfix/<short-description>`  | `hotfix/fix-offset-issue`   |
+## 🌿 Branch Naming Convention
 
-Allowed characters: lowercase letters, numbers, dashes (`-`), underscores (`_`), and dots (`.`).  
-Branch names must be descriptive and concise.
+All branches must follow one of the predefined naming patterns listed below:
+
+| Type        | Pattern                           | Example                        |
+| ----------- | --------------------------------- |--------------------------------|
+| Main        | `main` or `dev`                   | `main`                         |
+| Feature     | `feature/<short-description>`     | `feature/kafka_integration`    |
+| Bugfix      | `bugfix/<short-description>`      | `bugfix/null_pointer_handling` |
+| Improvement | `improvement/<short-description>` | `improvement/api_docs_format`  |
+| Library     | `library/<library-name>`          | `library/jinjava_upgrade`      |
+| Hotfix      | `hotfix/<short-description>`      | `hotfix/fix_offset_issue`      |
+
+---
+
+### ✅ Rules
+
+* Use only **lowercase letters**, **numbers**, **dashes (`-`)**, **underscores (`_`)**, and **dots (`.`)**.
+* Branch names must be **descriptive** and **concise**.
+* Avoid generic names like `fix`, `update`, or `new-feature`.
+
+---
+
+Would you like a Git hook or CI check to enforce this convention automatically?
+
 
 ### 💬 Commit message format
 
@@ -94,7 +112,7 @@ npm install -g @mermaid-js/mermaid-cli
 Example command to generate a PNG from a Mermaid file:
 
 ```bash
-mmdc -i docs/X.mmd -o docs/X.png
+mmdc -i docs/X.mmd -o docs/X.svg
 ```
 
 💡 _Any modification to a Mermaid diagram **must include a manual regeneration** of its corresponding PNG image._
@@ -175,6 +193,31 @@ Most IDEs support Checkstyle through plugins. For full compatibility, configure 
 2. Import the `google-java-checkstyle.xml` file as a new configuration.
 3. Set the required properties in the configuration UI.
 4. Enable Checkstyle for the project.
+
+#### VS Code
+
+1. Install the **Checkstyle for Java** extension from the marketplace.
+2. Open VS Code settings (File → Preferences → Settings).
+3. Search for "checkstyle" and find the Java Checkstyle settings.
+4. Set the following configurations:
+   - Under "Java > Checkstyle: Configuration": add a new entry with the path `${workspaceFolder}/checkstyle/google-java-checkstyle.xml`
+   - Under "Java > Checkstyle: Properties": add the following entries:
+     ```json
+     {
+       "checkstyle.header.file": "${workspaceFolder}/checkstyle/java.header",
+       "org.checkstyle.google.suppressionfilter.config": "${workspaceFolder}/checkstyle/checkstyle-suppressions.xml"
+     }
+     ```
+5. Alternatively, create a `.vscode/settings.json` file in your project with:
+   ```json
+   {
+     "java.checkstyle.configuration": "${workspaceFolder}/checkstyle/google-java-checkstyle.xml",
+     "java.checkstyle.properties": {
+       "checkstyle.header.file": "${workspaceFolder}/checkstyle/java.header",
+       "org.checkstyle.google.suppressionfilter.config": "${workspaceFolder}/checkstyle/checkstyle-suppressions.xml"
+     }
+   }
+   ```
 
 ### 🚧 Failing Builds
 

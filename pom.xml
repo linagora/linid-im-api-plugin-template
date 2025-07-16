@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.linagora.linid</groupId>
+    <groupId>org.linagora.linid.im</groupId>
     <artifactId>my-plugin</artifactId>
     <version>0.6.0</version>
     <packaging>jar</packaging>
@@ -23,17 +23,6 @@
             <comments>This project is licensed under the GNU AGPL v3.0</comments>
         </license>
     </licenses>
-
-    <distributionManagement>
-        <snapshotRepository>
-            <id>nexus</id>
-            <url>https://nexus-repository.linagora.com/repository/maven-snapshots/</url>
-        </snapshotRepository>
-        <repository>
-            <id>nexus</id>
-            <url>https://nexus-repository.linagora.com/repository/maven-releases/</url>
-        </repository>
-    </distributionManagement>
 
     <dependencyManagement>
         <dependencies>
@@ -144,64 +133,6 @@
                 <version>3.5.2</version>
             </plugin>
 
-            <!--
-                Checkstyle Plugin
-                This plugin helps enforce consistent code style rules across the project.
-                It runs automatically during the 'verify' phase of the Maven lifecycle.
-                Violations will cause the build to fail if 'failsOnError' is true.
-                You can customize the rules in 'checkstyle.xml' at the project root.
-            -->
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>3.4.0</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.puppycrawl.tools</groupId>
-                        <artifactId>checkstyle</artifactId>
-                        <version>10.25.0</version>
-                    </dependency>
-                </dependencies>
-                <configuration>
-                    <configLocation>checkstyle/google-java-checkstyle.xml</configLocation>
-                    <headerLocation>checkstyle/java.header</headerLocation>
-                    <propertyExpansion>checkstyle.header.file=checkstyle/java.header</propertyExpansion>
-                    <propertyExpansion>org.checkstyle.google.suppressionfilter.config=checkstyle/checkstyle-suppressions.xml</propertyExpansion>
-                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
-                    <consoleOutput>true</consoleOutput>
-                    <failOnViolation>true</failOnViolation>
-                    <violationSeverity>warning</violationSeverity>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>com.diffplug.spotless</groupId>
-                <artifactId>spotless-maven-plugin</artifactId>
-                <version>2.44.5</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>apply</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <java>
-                        <licenseHeader>
-                            <file>${project.basedir}/checkstyle/java.header</file>
-                        </licenseHeader>
-                    </java>
-                </configuration>
-            </plugin>
-
             <!-- JaCoCo plugin for code coverage -->
             <plugin>
                 <groupId>org.jacoco</groupId>
@@ -230,10 +161,10 @@
                 <version>1.19.2</version>
                 <configuration>
                     <targetClasses>
-                        <param>org.linagora.linid.myplugin.*</param>
+                        <param>org.linagora.linid.im.myplugin.*</param>
                     </targetClasses>
                     <targetTests>
-                        <param>org.linagora.linid.myplugin.*</param>
+                        <param>org.linagora.linid.im.myplugin.*</param>
                     </targetTests>
                     <mutators>
                         <mutator>STRONGER</mutator>
